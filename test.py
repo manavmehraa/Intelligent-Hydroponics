@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.metrics import mean_absolute_error
 import pandas as pd
@@ -29,3 +30,7 @@ iowa_model.fit(X,y)
 
 print(iowa_model.predict(X.head()))
 
+=======
+print (""hello world!")
+print("sameer")
+>>>>>>> 11921b304c73e416d23a01012adce2c813987809
