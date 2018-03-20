@@ -1,6 +1,6 @@
 import requests
 import json
-firebase_url = 'https://hydroponics-2018.firebaseio.com/'
+firebase_url = 'https://hydro-2018.firebaseio.com/'
 
 for i in range(0,100):
     data = {'value': i}

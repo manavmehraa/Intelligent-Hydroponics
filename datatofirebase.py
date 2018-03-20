@@ -5,7 +5,7 @@ import requests
 import json
 from time import sleep
 
-firebase_url = 'https://hydro-2018.firebaseio.com/'
+firebase_url = 'https://hydroponics-2018.firebaseio.com/'
 
 try:
     connection=SerialManager()
@@ -16,7 +16,9 @@ except:
     print("Not Working")
     
 relayPin = 5
+relayPin1 = 6
 a.pinMode(relayPin, a.OUTPUT)
+a.pinMode(relayPin1, a.OUTPUT)
 waterPin = b.pin.get('A0')
 dht = DHT(10, DHT.DHT11)
 
@@ -26,13 +28,25 @@ def water():
     return val
 
 def relay():
-        a.digitalWrite(relayPin, a.HIGH)
-        #print("Relay On")
-        sleep(1)
         a.digitalWrite(relayPin, a.LOW)
-        sleep(1)
+        #a.digitalWrite(6, a.LOW)
+        #print("Relay On")
+        sleep(2)
+        a.digitalWrite(relayPin, a.HIGH)
+        #a.digitalWrite(6, a.HIGH)
+        sleep(2)
         #print("Relay Off")
 
+def relay1():
+        #a.digitalWrite(relayPin, a.LOW)
+        a.digitalWrite(relayPin1, a.LOW)
+        #print("Relay On")
+        sleep(2)
+        #a.digitalWrite(relayPin, a.HIGH)
+        a.digitalWrite(relayPin1, a.HIGH)
+        sleep(2)
+        #print("Relay Off")
+        
 def temp():
     temp = dht.readTemperature(False)
     #print("Temperature is %.2f degrees Celcius" % dht.readTemperature(False))
@@ -56,10 +70,11 @@ try:
         water()
         temp()
         humidity()
-        firebase()
+        #firebase()
         #print("Water Level = ", water())
         #val =water()
-        #relay()
+        relay()
+        relay1()
         #print("Temperature = ", temp())
         #temp=temp()
         #print("Humidity = ", humidity())
